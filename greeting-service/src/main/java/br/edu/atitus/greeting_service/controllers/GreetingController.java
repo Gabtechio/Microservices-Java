@@ -13,27 +13,31 @@ import br.edu.atitus.greeting_service.configs.GreetingConfig;
 @RestController
 @RequestMapping("greeting-service")
 public class GreetingController {
-
+	
 //	@Value("${greeting-service.greeting}")
 //	private String greeting;
-//	
+//
 //	@Value("${greeting-service.default-name}")
 //	private String defaultName;
-
+	
 	private final GreetingConfig greetingConfig;
+	
+    public GreetingController(GreetingConfig greetingConfig) {
+	super();
+	this.greetingConfig = greetingConfig;
+}
 
-	public GreetingController(GreetingConfig greetingConfig) {
-		super();
-		this.greetingConfig = greetingConfig;
-	}
 
-	@GetMapping({ "", "/", "/{namePath}" })
-	public ResponseEntity<String> getGreetingService(@RequestParam(required = false) String name,
-			@PathVariable(required = false) String namePath) {
-		if (name == null)
-			name = namePath != null ? namePath : greetingConfig.getDefaultName();
 
-		String textReturn = String.format("%s %s!!!", greetingConfig.getGreeting(), name);
-		return ResponseEntity.ok(textReturn);
-	}
+	@GetMapping({"", "/", "/{namePath}"})
+    public ResponseEntity<String> getGreetingService(
+        @RequestParam(required = false) String name,
+        @PathVariable(required = false) String namePath
+    ) {
+        if (name == null)
+            name = namePath != null ? namePath : greetingConfig.getDefaultName();
+
+        String textReturn = String.format("%s %s!!!", greetingConfig.getGreeting(), name);
+        return ResponseEntity.ok(textReturn);
+    }
 }

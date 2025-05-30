@@ -8,7 +8,7 @@ public class CurrencyResponse {
 	
 	private String target;
 	
-	private double conversionRate;
+	private double converdionRate;
 	
 	private double convertedValue;
 	
@@ -38,12 +38,12 @@ public class CurrencyResponse {
 		this.target = target;
 	}
 
-	public double getConversionRate() {
-		return conversionRate;
+	public double getConverdionRate() {
+		return converdionRate;
 	}
 
-	public void setConversionRate(double conversionRate) {
-		this.conversionRate = conversionRate;
+	public void setConverdionRate(double converdionRate) {
+		this.converdionRate = converdionRate;
 	}
 
 	public double getConvertedValue() {
@@ -61,5 +61,6 @@ public class CurrencyResponse {
 	public void setEnviroment(String enviroment) {
 		this.enviroment = enviroment;
 	}
+	
 	
 }
